@@ -1,0 +1,74 @@
+# -------------------------
+# Environnements virtuels
+# -------------------------
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# -------------------------
+# Fichiers Python compilés
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -------------------------
+# Répertoires et fichiers de build / distribution
+# -------------------------
+build/
+dist/
+*.egg-info/
+eggs/
+parts/
+sdist/
+var/
+
+# -------------------------
+# Cache de tests et coverage
+# -------------------------
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# -------------------------
+# Données locales (SQLite, logs…)
+# -------------------------
+*.sqlite3
+*.db
+*.log
+
+# -------------------------
+# IDEs et éditeurs
+# -------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -------------------------
+# Systèmes d’exploitation
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Fichiers de configuration sensibles
+# -------------------------
+# Si ton config.yaml contient des secrets (API keys…), décommente la ligne suivante :
+# config.yaml
+
+# -------------------------
+# Sortie de commande SQLite (si tu l’utilises)
+# -------------------------
+*.csv
+*.json
+*.xml
+*.txt
