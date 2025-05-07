@@ -1,0 +1,51 @@
+pipeline:
+  name: "pipeData"
+  description: "Pipeline ETL pour extraire, transformer et charger des données de diverses sources"
+
+sources:
+  - name: "csv_source"
+    type: "file"
+    format: "csv"
+    path: "pipeData/dir/data.csv"
+  - name: "json_source"
+    type: "file"
+    format: "json"
+    path: "pipeData/dir/test.json"
+  - name: "txt_source"
+    type: "file"
+    format: "txt"
+    path: "pipeData/dir/test.txt"
+  - name: "db_source"
+    type: "database"
+    connection_string: "sqlite:///pipeData/dir/articles.db"
+    query: "SELECT * FROM articles"
+  - name: "api_source"
+    type: "api"
+    url: "https://api.openweathermap.org/data/2.5/weather"
+    params:
+      q: "Paris"
+      appid: "d7475aee3706d435f389999a2d1a73e8"
+      units: "metric"
+
+transformations:
+  - name: "filter_temperature"
+    type: "filter"
+    condition: "temp > 15"
+  - name: "convert_temperature"
+    type: "map"
+    operation: "temp * 1.8 + 32"  # Convertir Celsius en Fahrenheit
+  - name: "join_data"
+    type: "join"
+    left: "csv_source"
+    right: "db_source"
+    on: "id"
+
+targets:
+  - name: "json_output"
+    type: "file"
+    format: "json"
+    path: "pipeData/dir/output.json"
+  - name: "db_output"
+    type: "database"
+    connection_string: "sqlite:///pipeData/dir/articles.db"
+    table: "processed_data"
